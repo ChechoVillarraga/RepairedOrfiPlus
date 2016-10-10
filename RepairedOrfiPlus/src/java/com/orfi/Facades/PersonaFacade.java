@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class PersonaFacade extends AbstractFacade<Persona> {
 
-    @PersistenceContext(unitName = "OrfiPlusWebPU")
+    @PersistenceContext(unitName = "RepairedOrfiPlusPU")
     private EntityManager em;
 
     @Override
