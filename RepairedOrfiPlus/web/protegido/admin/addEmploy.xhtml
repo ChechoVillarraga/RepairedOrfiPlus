@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/adminTemplate.xhtml">
+
+            <ui:define name="title">
+                Ingresar Nuevo Empleado
+            </ui:define>
+
+            <ui:define name="content">
+
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2" id="matchGrid">
+                            <h:outputLabel value="Cedula:" for="idPERSONAS" />
+                            <h:inputText id="idPERSONAS" value="#{empleadoController.persona.idPERSONAS}" title="IdPERSONAS" required="true" requiredMessage="The IdPERSONAS field is required."/>
+
+                            <h:outputLabel value="Nombres:" for="nombres" />
+                            <h:inputText id="nombres" value="#{empleadoController.persona.nombres}" title="Nombres" />
+
+                            <h:outputLabel value="Apellidos:" for="apellidos" />
+                            <h:inputText id="apellidos" value="#{empleadoController.persona.apellidos}" title="Apellidos" />
+
+                            <h:outputLabel value="Telefonos:" for="telefonos" />
+                            <h:inputText id="telefonos" value="#{empleadoController.persona.telefonos}" title="Telefonos" />
+
+                            <h:outputLabel value="Correo electronico:" for="correoe" />
+                            <h:inputText id="correoe" value="#{empleadoController.persona.correoe}" title="Correoe" />
+
+                            <h:outputLabel for="pwd1" value="Contraseña:" />
+                            <p:password 
+                                id="pwd1" 
+                                value="#{empleadoController.persona.password}" 
+                                match="pwd2" 
+                                label="Contraseña" 
+                                required="true" />
+
+                            <h:outputLabel for="pwd2" value="Confirmar contraseña:" />
+                            <p:password 
+                                id="pwd2" 
+                                label="Confirmar contraseña" 
+                                required="true" />
+
+                            <p:outputLabel  value="" for="rolList"  />
+                            <p:selectManyMenu  id="rolList" value="#{empleadoController.persona.rolList}"  converter="rolConverter">
+                                <f:selectItems value="#{empleadoController.persona.rolList}" 
+                                               var="rolListItem"
+                                               itemValue="#{rolListItem}"
+                                               itemLabel="#{rolListItem.rol.toString()}"
+                                               />
+                            </p:selectManyMenu>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+
+
+                <p:commandButton 
+                    actionListener="#{personaController.saveNew}" 
+                    value="Guardar Empleado" 
+                    />
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
